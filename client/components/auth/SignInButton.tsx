@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Sparkles, LogOut } from "lucide-react";
-import { useNetlifyIdentity } from "@/hooks/use-netlify-identity";
+import { useNetlifyIdentity } from "@/hooks/useNetlifyIdentity";
 import { useNavigate } from "react-router-dom";
 
 export default function SignInButton() {
