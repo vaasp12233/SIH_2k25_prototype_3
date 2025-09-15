@@ -4,7 +4,21 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { Leaf, Recycle, Bike, Droplets, Sparkles, Medal, BookOpen, Users, Target, ShieldCheck } from "lucide-react";
+import { Slider } from "@/components/ui/slider";
+import {
+  Leaf,
+  Recycle,
+  Bike,
+  Droplets,
+  Sparkles,
+  Medal,
+  BookOpen,
+  Users,
+  Target,
+  ShieldCheck,
+  Rocket,
+  Gauge,
+} from "lucide-react";
 
 export default function Index() {
   const [ecoPoints, setEcoPoints] = useState(0);
@@ -16,8 +30,16 @@ export default function Index() {
 
   const [quizChoice, setQuizChoice] = useState<string | null>(null);
   const [quizDone, setQuizDone] = useState(false);
+  const [kms, setKms] = useState<number[]>([2]);
 
-  const progress = useMemo(() => Math.min(100, Math.round((ecoPoints / 100) * 100)), [ecoPoints]);
+  const progress = useMemo(
+    () => Math.min(100, Math.round((ecoPoints / 100) * 100)),
+    [ecoPoints],
+  );
+  const co2Saved = useMemo(
+    () => Math.round((kms[0] || 0) * 0.15 * 100) / 100,
+    [kms],
+  ); // ~0.15 kg CO₂ per km
 
   const toggleTask = (key: keyof typeof tasks, points: number) => {
     setTasks((prev) => {
@@ -49,7 +71,7 @@ export default function Index() {
               real-world impact. Complete interactive lessons and local tasks to earn
               eco‑points, badges, and bring change to your school and community.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               <Button asChild size="lg" className="shadow">
                 <a href="#get-started" className="inline-flex items-center gap-2">
                   <Sparkles className="h-5 w-5" /> Start learning
@@ -60,6 +82,10 @@ export default function Index() {
                   <Leaf className="h-5 w-5" /> Why it works
                 </a>
               </Button>
+              <div className="hidden sm:block">
+                {/* Google login */}
+                <GoogleLogin />
+              </div>
             </div>
             <div className="flex items-center gap-4 pt-2 text-sm text-muted-foreground">
               <span className="inline-flex items-center gap-2">
@@ -158,6 +184,17 @@ export default function Index() {
                   </div>
                 </div>
               </div>
+
+              <div className="rounded-lg border p-4">
+                <p className="text-sm font-semibold mb-2 inline-flex items-center gap-2"><Gauge className="h-4 w-4"/>Impact calculator</p>
+                <div className="text-xs text-muted-foreground">If your class replaces scooter/bus with walk/cycle for <b>{kms[0]} km</b> today:</div>
+                <div className="mt-3 flex items-center gap-4">
+                  <Slider value={kms} onValueChange={setKms} min={0} max={10} step={0.5} className="max-w-[240px]" />
+                  <div className="rounded-md bg-accent px-3 py-2 text-sm">
+                    ~{co2Saved} kg CO₂ saved
+                  </div>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </div>
@@ -178,6 +215,27 @@ export default function Index() {
           <Value icon={<Users className="h-5 w-5" />} title="School competitions" desc="House and school leaderboards drive participation." />
           <Value icon={<Medal className="h-5 w-5" />} title="Recognition" desc="Digital certificates for students and eco‑clubs." />
         </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <Step num={1} title="Learn" desc="Interactive, India‑first content built with teachers and NGOs." />
+          <Step num={2} title="Act" desc="Do on‑ground tasks: audits, tree care, waste drives, energy checks." />
+          <Step num={3} title="Win" desc="Earn eco‑points, compete within houses/schools, unlock rewards." />
+        </div>
+      </section>
+
+      <section className="container py-12">
+        <Card className="bg-gradient-to-r from-accent to-transparent">
+          <CardHeader className="flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between">
+            <div>
+              <CardTitle className="flex items-center gap-2"><Rocket className="h-5 w-5"/>SIH 2025 ready</CardTitle>
+              <CardDescription>Clear problem, measurable outcomes, scalable architecture, and community impact.</CardDescription>
+            </div>
+            <div className="flex gap-2">
+              <Badge variant="secondary">UNESCO-backed pedagogy</Badge>
+              <Badge variant="secondary">NEP 2020</Badge>
+            </div>
+          </CardHeader>
+        </Card>
       </section>
 
       <section id="leaderboard" className="container py-12">
@@ -250,7 +308,7 @@ export default function Index() {
               <a href="/challenges">Explore challenges</a>
             </Button>
             <Button asChild variant="secondary" size="lg">
-              <a href="#faq">Learn more</a>
+              <a href="mailto:team@ecospark.app?subject=EcoSpark%20School%20Onboarding">Talk to us</a>
             </Button>
           </CardContent>
         </Card>
@@ -275,6 +333,18 @@ function Value({ icon, title, desc }: { icon: React.ReactNode; title: string; de
         {icon}
         {title}
       </div>
+      <p className="text-sm text-muted-foreground">{desc}</p>
+    </div>
+  );
+}
+
+function Step({ num, title, desc }: { num: number; title: string; desc: string }) {
+  return (
+    <div className="rounded-xl border p-5">
+      <div className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">
+        {num}
+      </div>
+      <p className="font-semibold">{title}</p>
       <p className="text-sm text-muted-foreground">{desc}</p>
     </div>
   );
