@@ -1,6 +1,12 @@
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
@@ -68,13 +74,17 @@ export default function Index() {
               Learn, act, and win for the planet
             </h1>
             <p className="text-lg text-muted-foreground">
-              EcoSpark is a gamified platform that turns environmental education into
-              real-world impact. Complete interactive lessons and local tasks to earn
-              eco‑points, badges, and bring change to your school and community.
+              EcoSpark is a gamified platform that turns environmental education
+              into real-world impact. Complete interactive lessons and local
+              tasks to earn eco‑points, badges, and bring change to your school
+              and community.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <Button asChild size="lg" className="shadow">
-                <a href="#get-started" className="inline-flex items-center gap-2">
+                <a
+                  href="#get-started"
+                  className="inline-flex items-center gap-2"
+                >
                   <Sparkles className="h-5 w-5" /> Start learning
                 </a>
               </Button>
@@ -111,36 +121,69 @@ export default function Index() {
             <CardContent className="space-y-6">
               <div>
                 <div className="mb-2 flex items-end justify-between">
-                  <div className="text-3xl font-extrabold tracking-tight">{ecoPoints}</div>
-                  <span className="text-xs text-muted-foreground">Level 1 • 100 pts</span>
+                  <div className="text-3xl font-extrabold tracking-tight">
+                    {ecoPoints}
+                  </div>
+                  <span className="text-xs text-muted-foreground">
+                    Level 1 • 100 pts
+                  </span>
                 </div>
                 <Progress value={progress} />
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-3">
-                  <p className="text-sm font-semibold">Today’s micro‑challenges</p>
+                  <p className="text-sm font-semibold">
+                    Today’s micro‑challenges
+                  </p>
                   <div className="flex items-center gap-3 rounded-lg border p-3">
-                    <Checkbox id="seg" checked={tasks.segregate} onCheckedChange={() => toggleTask("segregate", 10)} />
-                    <label htmlFor="seg" className="grid cursor-pointer text-sm">
+                    <Checkbox
+                      id="seg"
+                      checked={tasks.segregate}
+                      onCheckedChange={() => toggleTask("segregate", 10)}
+                    />
+                    <label
+                      htmlFor="seg"
+                      className="grid cursor-pointer text-sm"
+                    >
                       Segregate your waste at home
-                      <span className="text-xs text-muted-foreground">+10 pts</span>
+                      <span className="text-xs text-muted-foreground">
+                        +10 pts
+                      </span>
                     </label>
                     <Recycle className="ml-auto h-4 w-4 text-primary" />
                   </div>
                   <div className="flex items-center gap-3 rounded-lg border p-3">
-                    <Checkbox id="cyc" checked={tasks.cycle} onCheckedChange={() => toggleTask("cycle", 15)} />
-                    <label htmlFor="cyc" className="grid cursor-pointer text-sm">
+                    <Checkbox
+                      id="cyc"
+                      checked={tasks.cycle}
+                      onCheckedChange={() => toggleTask("cycle", 15)}
+                    />
+                    <label
+                      htmlFor="cyc"
+                      className="grid cursor-pointer text-sm"
+                    >
                       Walk or cycle for 15 minutes
-                      <span className="text-xs text-muted-foreground">+15 pts</span>
+                      <span className="text-xs text-muted-foreground">
+                        +15 pts
+                      </span>
                     </label>
                     <Bike className="ml-auto h-4 w-4 text-primary" />
                   </div>
                   <div className="flex items-center gap-3 rounded-lg border p-3">
-                    <Checkbox id="bot" checked={tasks.bottle} onCheckedChange={() => toggleTask("bottle", 5)} />
-                    <label htmlFor="bot" className="grid cursor-pointer text-sm">
+                    <Checkbox
+                      id="bot"
+                      checked={tasks.bottle}
+                      onCheckedChange={() => toggleTask("bottle", 5)}
+                    />
+                    <label
+                      htmlFor="bot"
+                      className="grid cursor-pointer text-sm"
+                    >
                       Carry a reusable water bottle
-                      <span className="text-xs text-muted-foreground">+5 pts</span>
+                      <span className="text-xs text-muted-foreground">
+                        +5 pts
+                      </span>
                     </label>
                     <Droplets className="ml-auto h-4 w-4 text-primary" />
                   </div>
@@ -158,7 +201,10 @@ export default function Index() {
                         { id: "500-1000", label: "500–1,000 years" },
                         { id: "5-10", label: "5–10 years" },
                       ].map((opt) => (
-                        <label key={opt.id} className={`flex cursor-pointer items-center gap-2 rounded-md border p-2 ${quizChoice === opt.id ? "border-primary bg-primary/5" : "hover:bg-accent"}`}>
+                        <label
+                          key={opt.id}
+                          className={`flex cursor-pointer items-center gap-2 rounded-md border p-2 ${quizChoice === opt.id ? "border-primary bg-primary/5" : "hover:bg-accent"}`}
+                        >
                           <input
                             type="radio"
                             name="quiz1"
@@ -172,25 +218,48 @@ export default function Index() {
                     </div>
                     <div className="mt-3 flex items-center justify-between">
                       {!quizDone ? (
-                        <Button size="sm" onClick={answerQuiz} disabled={!quizChoice}>
+                        <Button
+                          size="sm"
+                          onClick={answerQuiz}
+                          disabled={!quizChoice}
+                        >
                           Submit
                         </Button>
                       ) : (
-                        <span className={`text-sm ${quizChoice === "500-1000" ? "text-emerald-600" : "text-destructive"}`}>
-                          {quizChoice === "500-1000" ? "+20 pts • Correct!" : "Incorrect. +0 pts"}
+                        <span
+                          className={`text-sm ${quizChoice === "500-1000" ? "text-emerald-600" : "text-destructive"}`}
+                        >
+                          {quizChoice === "500-1000"
+                            ? "+20 pts • Correct!"
+                            : "Incorrect. +0 pts"}
                         </span>
                       )}
-                      <span className="text-xs text-muted-foreground">UNESCO: Gamified learning boosts retention by 70%+</span>
+                      <span className="text-xs text-muted-foreground">
+                        UNESCO: Gamified learning boosts retention by 70%+
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="rounded-lg border p-4">
-                <p className="text-sm font-semibold mb-2 inline-flex items-center gap-2"><Gauge className="h-4 w-4"/>Impact calculator</p>
-                <div className="text-xs text-muted-foreground">If your class replaces scooter/bus with walk/cycle for <b>{kms[0]} km</b> today:</div>
+                <p className="text-sm font-semibold mb-2 inline-flex items-center gap-2">
+                  <Gauge className="h-4 w-4" />
+                  Impact calculator
+                </p>
+                <div className="text-xs text-muted-foreground">
+                  If your class replaces scooter/bus with walk/cycle for{" "}
+                  <b>{kms[0]} km</b> today:
+                </div>
                 <div className="mt-3 flex items-center gap-4">
-                  <Slider value={kms} onValueChange={setKms} min={0} max={10} step={0.5} className="max-w-[240px]" />
+                  <Slider
+                    value={kms}
+                    onValueChange={setKms}
+                    min={0}
+                    max={10}
+                    step={0.5}
+                    className="max-w-[240px]"
+                  />
                   <div className="rounded-md bg-accent px-3 py-2 text-sm">
                     ~{co2Saved} kg CO₂ saved
                   </div>
@@ -203,24 +272,55 @@ export default function Index() {
 
       <section id="impact" className="container py-16">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight">Why EcoSpark</h2>
+          <h2 className="text-3xl font-extrabold tracking-tight">
+            Why EcoSpark
+          </h2>
           <p className="mt-3 text-muted-foreground">
-            Textbooks alone can’t change behavior. We combine interactive lessons with
-            real tasks and local projects to build lifelong habits—aligned with India’s
-            SDGs and NEP 2020’s experiential learning.
+            Textbooks alone can’t change behavior. We combine interactive
+            lessons with real tasks and local projects to build lifelong
+            habits—aligned with India’s SDGs and NEP 2020’s experiential
+            learning.
           </p>
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <Value icon={<BookOpen className="h-5 w-5" />} title="Practical lessons" desc="Short, localised modules with activities that matter." />
-          <Value icon={<Target className="h-5 w-5" />} title="Action + tracking" desc="Eco‑points, streaks, and badges to sustain habits." />
-          <Value icon={<Users className="h-5 w-5" />} title="School competitions" desc="House and school leaderboards drive participation." />
-          <Value icon={<Medal className="h-5 w-5" />} title="Recognition" desc="Digital certificates for students and eco‑clubs." />
+          <Value
+            icon={<BookOpen className="h-5 w-5" />}
+            title="Practical lessons"
+            desc="Short, localised modules with activities that matter."
+          />
+          <Value
+            icon={<Target className="h-5 w-5" />}
+            title="Action + tracking"
+            desc="Eco‑points, streaks, and badges to sustain habits."
+          />
+          <Value
+            icon={<Users className="h-5 w-5" />}
+            title="School competitions"
+            desc="House and school leaderboards drive participation."
+          />
+          <Value
+            icon={<Medal className="h-5 w-5" />}
+            title="Recognition"
+            desc="Digital certificates for students and eco‑clubs."
+          />
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          <Step num={1} title="Learn" desc="Interactive, India‑first content built with teachers and NGOs." />
-          <Step num={2} title="Act" desc="Do on‑ground tasks: audits, tree care, waste drives, energy checks." />
-          <Step num={3} title="Win" desc="Earn eco‑points, compete within houses/schools, unlock rewards." />
+          <Step
+            num={1}
+            title="Learn"
+            desc="Interactive, India‑first content built with teachers and NGOs."
+          />
+          <Step
+            num={2}
+            title="Act"
+            desc="Do on‑ground tasks: audits, tree care, waste drives, energy checks."
+          />
+          <Step
+            num={3}
+            title="Win"
+            desc="Earn eco‑points, compete within houses/schools, unlock rewards."
+          />
         </div>
       </section>
 
@@ -228,8 +328,14 @@ export default function Index() {
         <Card className="bg-gradient-to-r from-accent to-transparent">
           <CardHeader className="flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between">
             <div>
-              <CardTitle className="flex items-center gap-2"><Rocket className="h-5 w-5"/>SIH 2025 ready</CardTitle>
-              <CardDescription>Clear problem, measurable outcomes, scalable architecture, and community impact.</CardDescription>
+              <CardTitle className="flex items-center gap-2">
+                <Rocket className="h-5 w-5" />
+                SIH 2025 ready
+              </CardTitle>
+              <CardDescription>
+                Clear problem, measurable outcomes, scalable architecture, and
+                community impact.
+              </CardDescription>
             </div>
             <div className="flex gap-2">
               <Badge variant="secondary">UNESCO-backed pedagogy</Badge>
@@ -243,7 +349,9 @@ export default function Index() {
         <Card>
           <CardHeader>
             <CardTitle>Leaderboard preview</CardTitle>
-            <CardDescription>Top schools this month by eco‑points</CardDescription>
+            <CardDescription>
+              Top schools this month by eco‑points
+            </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4 md:grid-cols-2">
             {[
@@ -254,7 +362,9 @@ export default function Index() {
             ].map((row, i) => (
               <div key={row.name} className="rounded-lg border p-4">
                 <div className="mb-2 flex items-center justify-between text-sm">
-                  <span className="font-semibold">{i + 1}. {row.name}</span>
+                  <span className="font-semibold">
+                    {i + 1}. {row.name}
+                  </span>
                   <span className="text-muted-foreground">{row.pts} pts</span>
                 </div>
                 <Progress value={Math.min(100, (row.pts / 1300) * 100)} />
@@ -267,7 +377,9 @@ export default function Index() {
       <section id="stakeholders" className="container py-16">
         <div className="grid items-start gap-8 md:grid-cols-2">
           <div className="space-y-4">
-            <h3 className="text-2xl font-extrabold tracking-tight">Who benefits</h3>
+            <h3 className="text-2xl font-extrabold tracking-tight">
+              Who benefits
+            </h3>
             <ul className="list-inside space-y-2 text-muted-foreground">
               <li>• Students build real, sustainable habits</li>
               <li>• Teachers and eco‑clubs get ready‑to‑run activities</li>
@@ -281,12 +393,22 @@ export default function Index() {
             </CardHeader>
             <CardContent className="flex flex-wrap gap-3">
               {[
-                { label: "Water Saver", icon: <Droplets className="h-4 w-4" /> },
-                { label: "Waste Warrior", icon: <Recycle className="h-4 w-4" /> },
+                {
+                  label: "Water Saver",
+                  icon: <Droplets className="h-4 w-4" />,
+                },
+                {
+                  label: "Waste Warrior",
+                  icon: <Recycle className="h-4 w-4" />,
+                },
                 { label: "Green Rider", icon: <Bike className="h-4 w-4" /> },
                 { label: "Campus Hero", icon: <Medal className="h-4 w-4" /> },
               ].map((b) => (
-                <Badge key={b.label} variant="secondary" className="inline-flex items-center gap-1">
+                <Badge
+                  key={b.label}
+                  variant="secondary"
+                  className="inline-flex items-center gap-1"
+                >
                   {b.icon}
                   {b.label}
                 </Badge>
@@ -299,9 +421,12 @@ export default function Index() {
       <section id="get-started" className="container pb-20">
         <Card className="mx-auto max-w-5xl border-primary/20">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl">Bring EcoSpark to your school</CardTitle>
+            <CardTitle className="text-2xl">
+              Bring EcoSpark to your school
+            </CardTitle>
             <CardDescription>
-              Set up eco‑clubs, track points, and run inter‑house competitions with ease.
+              Set up eco‑clubs, track points, and run inter‑house competitions
+              with ease.
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -309,7 +434,9 @@ export default function Index() {
               <a href="/challenges">Explore challenges</a>
             </Button>
             <Button asChild variant="secondary" size="lg">
-              <a href="mailto:team@ecospark.app?subject=EcoSpark%20School%20Onboarding">Talk to us</a>
+              <a href="mailto:team@ecospark.app?subject=EcoSpark%20School%20Onboarding">
+                Talk to us
+              </a>
             </Button>
           </CardContent>
         </Card>
@@ -319,7 +446,8 @@ export default function Index() {
         <div className="mx-auto max-w-3xl text-center">
           <h3 className="text-2xl font-extrabold tracking-tight">FAQ</h3>
           <p className="mt-2 text-muted-foreground">
-            EcoSpark follows NEP 2020’s call for experiential learning and supports India’s SDGs.
+            EcoSpark follows NEP 2020’s call for experiential learning and
+            supports India’s SDGs.
           </p>
         </div>
       </section>
@@ -327,7 +455,15 @@ export default function Index() {
   );
 }
 
-function Value({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) {
+function Value({
+  icon,
+  title,
+  desc,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  desc: string;
+}) {
   return (
     <div className="rounded-xl border p-5 shadow-sm">
       <div className="mb-3 inline-flex items-center gap-2 rounded-md bg-accent px-3 py-1 text-sm font-semibold">
@@ -339,7 +475,15 @@ function Value({ icon, title, desc }: { icon: React.ReactNode; title: string; de
   );
 }
 
-function Step({ num, title, desc }: { num: number; title: string; desc: string }) {
+function Step({
+  num,
+  title,
+  desc,
+}: {
+  num: number;
+  title: string;
+  desc: string;
+}) {
   return (
     <div className="rounded-xl border p-5">
       <div className="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold">

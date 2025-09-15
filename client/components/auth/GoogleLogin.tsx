@@ -10,7 +10,7 @@ function parseJwt(token: string) {
       atob(base64)
         .split("")
         .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
-        .join("")
+        .join(""),
     );
     return JSON.parse(jsonPayload);
   } catch {
@@ -29,7 +29,9 @@ declare global {
   const google: any;
 }
 
-export default function GoogleLogin({ size = "large" as "large" | "medium" | "small" }) {
+export default function GoogleLogin({
+  size = "large" as "large" | "medium" | "small",
+}) {
   const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined;
   const btnRef = useRef<HTMLDivElement>(null);
   const [profile, setProfile] = useState<Profile | null>(() => {
@@ -60,7 +62,8 @@ export default function GoogleLogin({ size = "large" as "large" | "medium" | "sm
   }, [clientId]);
 
   useEffect(() => {
-    if (!clientId || !ready || !btnRef.current || typeof google === "undefined") return;
+    if (!clientId || !ready || !btnRef.current || typeof google === "undefined")
+      return;
     google.accounts.id.initialize({
       client_id: clientId,
       callback: (resp: { credential: string }) => {
@@ -94,7 +97,11 @@ export default function GoogleLogin({ size = "large" as "large" | "medium" | "sm
       <Button
         variant="outline"
         size="lg"
-        onClick={() => alert("Set VITE_GOOGLE_CLIENT_ID to enable Google Login, or ask us to connect Supabase Auth for Google OAuth.")}
+        onClick={() =>
+          alert(
+            "Set VITE_GOOGLE_CLIENT_ID to enable Google Login, or ask us to connect Supabase Auth for Google OAuth.",
+          )
+        }
       >
         Continue with Google
       </Button>
@@ -106,13 +113,19 @@ export default function GoogleLogin({ size = "large" as "large" | "medium" | "sm
       <div className="flex items-center gap-3 rounded-full border px-3 py-2">
         {profile.picture ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={profile.picture} alt={profile.name || ""} className="h-6 w-6 rounded-full" />
+          <img
+            src={profile.picture}
+            alt={profile.name || ""}
+            className="h-6 w-6 rounded-full"
+          />
         ) : (
           <div className="flex h-6 w-6 items-center justify-center rounded-full bg-accent text-xs font-bold">
             {(profile.name || profile.email || "U").charAt(0).toUpperCase()}
           </div>
         )}
-        <span className="text-sm">Signed in as {profile.name || profile.email}</span>
+        <span className="text-sm">
+          Signed in as {profile.name || profile.email}
+        </span>
         <Button
           variant="ghost"
           size="sm"
