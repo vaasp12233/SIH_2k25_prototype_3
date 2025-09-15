@@ -1,7 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Leaf, Medal, Sparkles } from "lucide-react";
+import { Leaf, Medal } from "lucide-react";
+import SignInButton from "@/components/auth/SignInButton";
 
 function Logo() {
   return (
