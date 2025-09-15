@@ -53,12 +53,7 @@ export function Header() {
               Leaderboard
             </Link>
           </Button>
-          <Button asChild className="shadow-sm">
-            <Link to="/#get-started" className="inline-flex items-center gap-1">
-              <Sparkles className="h-4 w-4" />
-              Get started
-            </Link>
-          </Button>
+          <SignInButton />
         </div>
       </div>
     </header>
