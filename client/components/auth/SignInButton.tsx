@@ -10,10 +10,7 @@ export default function SignInButton() {
   if (user) {
     return (
       <div className="flex items-center gap-2">
-        <Button
-          className="shadow-sm"
-          onClick={() => navigate("/challenges")}
-        >
+        <Button className="shadow-sm" onClick={() => navigate("/challenges")}>
           <Sparkles className="h-4 w-4" /> Go to challenges
         </Button>
         <Button variant="ghost" onClick={() => logout()}>
