@@ -47,16 +47,16 @@ export function Header() {
         </nav>
         <div className="flex items-center gap-2">
           <Button asChild variant="ghost" className="hidden md:inline-flex">
-            <a href="#leaderboard" className="inline-flex items-center gap-1">
+            <Link to="/#leaderboard" className="inline-flex items-center gap-1">
               <Medal className="h-4 w-4" />
               Leaderboard
-            </a>
+            </Link>
           </Button>
           <Button asChild className="shadow-sm">
-            <a href="#get-started" className="inline-flex items-center gap-1">
+            <Link to="/#get-started" className="inline-flex items-center gap-1">
               <Sparkles className="h-4 w-4" />
               Get started
-            </a>
+            </Link>
           </Button>
         </div>
       </div>
