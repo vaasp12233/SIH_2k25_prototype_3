@@ -1,19 +1,37 @@
 import { useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { CHALLENGES, Challenge } from "./challenges-data";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Leaf, Recycle, Droplets, Bike, SunMedium } from "lucide-react";
 
 function Icon({ name }: { name: Challenge["icon"] }) {
-  const C = name === "recycle" ? Recycle : name === "droplets" ? Droplets : name === "bike" ? Bike : name === "sun" ? SunMedium : Leaf;
+  const C =
+    name === "recycle"
+      ? Recycle
+      : name === "droplets"
+        ? Droplets
+        : name === "bike"
+          ? Bike
+          : name === "sun"
+            ? SunMedium
+            : Leaf;
   return <C className="h-5 w-5 text-primary" />;
 }
 
 export default function ChallengeDetail() {
   const { slug } = useParams<{ slug: string }>();
 
-  const challenge = useMemo(() => CHALLENGES.find((c) => c.slug === slug), [slug]);
+  const challenge = useMemo(
+    () => CHALLENGES.find((c) => c.slug === slug),
+    [slug],
+  );
 
   if (!challenge) {
     return (
@@ -21,7 +39,9 @@ export default function ChallengeDetail() {
         <Card>
           <CardHeader>
             <CardTitle>Challenge not found</CardTitle>
-            <CardDescription>The challenge you tried to open does not exist.</CardDescription>
+            <CardDescription>
+              The challenge you tried to open does not exist.
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <Button asChild>
