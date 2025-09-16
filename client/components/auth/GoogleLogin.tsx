@@ -26,7 +26,9 @@ interface Profile {
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  interface Window { google?: any }
+  interface Window {
+    google?: any;
+  }
 }
 
 type GoogleMode = "signin" | "signup";
@@ -57,7 +59,9 @@ export default function GoogleLogin({
       setReady(true);
       return;
     }
-    const existing = document.querySelector('script[src="https://accounts.google.com/gsi/client"]');
+    const existing = document.querySelector(
+      'script[src="https://accounts.google.com/gsi/client"]',
+    );
     if (existing) {
       existing.addEventListener("load", () => setReady(true), { once: true });
       return;
@@ -71,7 +75,14 @@ export default function GoogleLogin({
   }, [clientId]);
 
   useEffect(() => {
-    if (!clientId || !ready || !btnRef.current || !window.google || renderedRef.current) return;
+    if (
+      !clientId ||
+      !ready ||
+      !btnRef.current ||
+      !window.google ||
+      renderedRef.current
+    )
+      return;
     window.google.accounts.id.initialize({
       client_id: clientId,
       callback: (resp: { credential: string }) => {
