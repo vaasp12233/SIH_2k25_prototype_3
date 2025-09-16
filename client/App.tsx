@@ -13,6 +13,7 @@ import { Header } from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Challenges from "@/pages/Challenges";
 import ChallengeDetail from "@/pages/ChallengeDetail";
+import ChallengeSubPage from "@/pages/ChallengeSubPage";
 import Account from "@/pages/Account";
 
 const queryClient = new QueryClient();
