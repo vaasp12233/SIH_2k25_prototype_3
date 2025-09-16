@@ -1,9 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Leaf, Medal, Sparkles } from "lucide-react";
-import ThemeToggle from "@/components/layout/ThemeToggle";
-import GoogleLogin from "@/components/auth/GoogleLogin";
+
+import { Leaf, Medal } from "lucide-react";
+import SignInButton from "@/components/auth/SignInButton";
 
 function Logo() {
   return (
@@ -85,14 +85,9 @@ export function Header() {
               Leaderboard
             </Link>
           </Button>
-          <Button asChild className="shadow-sm">
-            <Link to="/#get-started" className="inline-flex items-center gap-1">
-              <Sparkles className="h-4 w-4" />
-              Get started
-            </Link>
-          </Button>
-          <GoogleLogin size="medium" />
-          <ThemeToggle />
+
+          <SignInButton />
+          
         </div>
       </div>
     </header>
