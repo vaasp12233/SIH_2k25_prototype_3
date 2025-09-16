@@ -1,5 +1,3 @@
-import { BookOpen, ListChecks, Medal } from "lucide-react";
-
 export type SubPage = {
   slug: "learn" | "act" | "rewards";
   title: string;
@@ -27,8 +25,3 @@ export const SUB_PAGES: SubPage[] = [
     icon: "medal",
   },
 ];
-
-export function SubIcon({ name, className }: { name: SubPage["icon"]; className?: string }) {
-  const C = name === "book" ? BookOpen : name === "check" ? ListChecks : Medal;
-  return <C className={className} />;
-}
