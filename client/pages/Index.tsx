@@ -93,9 +93,9 @@ export default function Index() {
                   <Leaf className="h-5 w-5" /> Why it works
                 </a>
               </Button>
-              <div className="hidden sm:block">
-                {/* Google login */}
-                <GoogleLogin />
+              <div className="flex gap-2">
+                <GoogleLogin mode="signin" />
+                <GoogleLogin mode="signup" />
               </div>
             </div>
             <div className="flex items-center gap-4 pt-2 text-sm text-muted-foreground">
