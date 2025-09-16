@@ -280,6 +280,82 @@ export default function Index() {
         </div>
       </section>
 
+      <Dialog open={wizardOpen} onOpenChange={setWizardOpen}>
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Let’s get you started</DialogTitle>
+          </DialogHeader>
+          <div className="grid gap-4">
+            <div>
+              <p className="text-sm font-medium">Your grade</p>
+              <div className="mt-2 grid grid-cols-3 gap-2">
+                {["6-8", "9-10", "11-12"].map((g) => (
+                  <button
+                    key={g}
+                    onClick={() => setGrade(g)}
+                    className={`rounded-md border px-3 py-2 text-sm ${grade === g ? "border-primary bg-primary/5" : "hover:bg-accent"}`}
+                  >
+                    {g}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="text-sm font-medium">Where are you using EcoSpark?</p>
+              <div className="mt-2 grid grid-cols-3 gap-2">
+                {["School", "College", "Home"].map((c) => (
+                  <button
+                    key={c}
+                    onClick={() => setContext(c)}
+                    className={`rounded-md border px-3 py-2 text-sm ${context === c ? "border-primary bg-primary/5" : "hover:bg-accent"}`}
+                  >
+                    {c}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="text-sm font-medium">Pick an interest</p>
+              <div className="mt-2 grid grid-cols-3 gap-2">
+                {["Waste", "Water", "Energy"].map((i) => (
+                  <button
+                    key={i}
+                    onClick={() => setInterest(i)}
+                    className={`rounded-md border px-3 py-2 text-sm ${interest === i ? "border-primary bg-primary/5" : "hover:bg-accent"}`}
+                  >
+                    {i}
+                  </button>
+                ))}
+              </div>
+            </div>
+            {grade && interest && context && (
+              <div className="rounded-lg border p-3 text-sm">
+                <p className="font-semibold">Your starter task</p>
+                <p className="mt-1 text-muted-foreground">
+                  {interest === "Waste" && `Start a 3-bin segregation at ${context?.toLowerCase()}, log with photos.`}
+                  {interest === "Water" && `Audit taps and fix leaks in ${context?.toLowerCase()}, submit report.`}
+                  {interest === "Energy" && "Switch-off drive in classrooms; map top 3 energy hogs."}
+                </p>
+              </div>
+            )}
+          </div>
+          <DialogFooter>
+            <Button
+              onClick={() => {
+                if (grade && interest && context) {
+                  setEcoPoints((p) => p + 15);
+                  toast.success("Starter task added! +15 pts");
+                  setWizardOpen(false);
+                }
+              }}
+              disabled={!grade || !interest || !context}
+            >
+              Add to my challenges
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
       <section id="impact" className="container py-16">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-extrabold tracking-tight">
