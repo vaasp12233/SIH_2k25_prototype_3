@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound";
 import { Header } from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Challenges from "@/pages/Challenges";
+import Account from "@/pages/Account";
 
 const queryClient = new QueryClient();
 
