@@ -1,6 +1,13 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Leaf, Recycle, Droplets, Bike, SunMedium } from "lucide-react";
+import { Link } from "react-router-dom";
+import { CHALLENGES } from "./challenges-data";
+
+function Icon({ name }: { name: "recycle" | "droplets" | "bike" | "sun" | "leaf" }) {
+  const C = name === "recycle" ? Recycle : name === "droplets" ? Droplets : name === "bike" ? Bike : name === "sun" ? SunMedium : Leaf;
+  return <C className="h-5 w-5 text-primary" />;
+}
 
 export default function Challenges() {
   return (
@@ -17,56 +24,20 @@ export default function Challenges() {
       </div>
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Recycle className="h-5 w-5 text-primary" /> Waste Segregation
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm text-muted-foreground">
-            Start a 3-bin system for dry, wet, and reject waste. Earn points by keeping logs and photos.
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Droplets className="h-5 w-5 text-primary" /> Save Water
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm text-muted-foreground">
-            Conduct a tap-leak audit on campus. Submit findings and fixes for bonus points.
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Bike className="h-5 w-5 text-primary" /> Walk/Cycle to School
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm text-muted-foreground">
-            Replace one car/scooter trip per week. Track your CO₂ saved.
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <SunMedium className="h-5 w-5 text-primary" /> Energy Audit
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm text-muted-foreground">
-            Switch off idle fans/lights. Map high-usage areas and propose improvements.
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Leaf className="h-5 w-5 text-primary" /> Tree Plantation
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm text-muted-foreground">
-            Participate in local drives. Care for saplings for 6 months to earn a badge.
-          </CardContent>
-        </Card>
+        {CHALLENGES.map((c) => (
+          <Link key={c.slug} to={`/challenges/${c.slug}`} className="group">
+            <Card className="transition-colors group-hover:border-primary/40">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Icon name={c.icon} /> {c.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="text-sm text-muted-foreground">
+                {c.description}
+              </CardContent>
+            </Card>
+          </Link>
+        ))}
       </div>
 
       <p className="mt-8 text-center text-sm text-muted-foreground">
