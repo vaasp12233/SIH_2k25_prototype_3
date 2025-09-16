@@ -26,7 +26,7 @@ interface Profile {
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const google: any;
+  interface Window { google?: any }
 }
 
 type GoogleMode = "signin" | "signup";
@@ -49,11 +49,17 @@ export default function GoogleLogin({
     }
   });
   const [ready, setReady] = useState(false);
+  const renderedRef = useRef(false);
 
   useEffect(() => {
     if (!clientId) return;
     if (window.google) {
       setReady(true);
+      return;
+    }
+    const existing = document.querySelector('script[src="https://accounts.google.com/gsi/client"]');
+    if (existing) {
+      existing.addEventListener("load", () => setReady(true), { once: true });
       return;
     }
     const script = document.createElement("script");
@@ -62,15 +68,11 @@ export default function GoogleLogin({
     script.defer = true;
     script.onload = () => setReady(true);
     document.head.appendChild(script);
-    return () => {
-      document.head.removeChild(script);
-    };
   }, [clientId]);
 
   useEffect(() => {
-    if (!clientId || !ready || !btnRef.current || typeof google === "undefined")
-      return;
-    google.accounts.id.initialize({
+    if (!clientId || !ready || !btnRef.current || !window.google || renderedRef.current) return;
+    window.google.accounts.id.initialize({
       client_id: clientId,
       callback: (resp: { credential: string }) => {
         const claims = parseJwt(resp.credential);
@@ -88,7 +90,7 @@ export default function GoogleLogin({
       context: mode as "signin" | "signup",
     });
 
-    google.accounts.id.renderButton(btnRef.current, {
+    window.google.accounts.id.renderButton(btnRef.current, {
       type: "standard",
       theme: "outline",
       size,
@@ -96,7 +98,8 @@ export default function GoogleLogin({
       text: mode === "signup" ? "signup_with" : "signin_with",
       logo_alignment: "left",
     });
-  }, [clientId, ready]);
+    renderedRef.current = true;
+  }, [clientId, ready, mode, size]);
 
   if (!clientId) {
     return (
