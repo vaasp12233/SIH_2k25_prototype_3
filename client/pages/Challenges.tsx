@@ -49,8 +49,21 @@ export default function Challenges() {
                     <Icon name={c.icon} /> {c.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="text-sm text-muted-foreground">
-                  {c.description}
+                <CardContent className="space-y-3">
+                  <p className="text-sm text-muted-foreground">{c.description}</p>
+                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                    <Link to={`/challenges/${c.slug}/learn`} className="inline-flex items-center gap-1 hover:text-foreground">
+                      <BookOpen className="h-3.5 w-3.5" /> Learn
+                    </Link>
+                    <span>•</span>
+                    <Link to={`/challenges/${c.slug}/act`} className="inline-flex items-center gap-1 hover:text-foreground">
+                      <ListChecks className="h-3.5 w-3.5" /> Act
+                    </Link>
+                    <span>•</span>
+                    <Link to={`/challenges/${c.slug}/rewards`} className="inline-flex items-center gap-1 hover:text-foreground">
+                      <Medal className="h-3.5 w-3.5" /> Rewards
+                    </Link>
+                  </div>
                 </CardContent>
               </Card>
             </Link>
