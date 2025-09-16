@@ -44,6 +44,10 @@ export default function Index() {
   const [grade, setGrade] = useState<string | null>(null);
   const [interest, setInterest] = useState<string | null>(null);
   const [context, setContext] = useState<string | null>(null);
+  const location = useLocation();
+  useEffect(() => {
+    if (location.hash === "#get-started") setWizardOpen(true);
+  }, [location.hash]);
 
   const progress = useMemo(
     () => Math.min(100, Math.round((ecoPoints / 100) * 100)),
@@ -140,7 +144,7 @@ export default function Index() {
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-3">
                   <p className="text-sm font-semibold">
-                    Today��s micro‑challenges
+                    Today’s micro‑challenges
                   </p>
                   <div className="flex items-center gap-3 rounded-lg border p-3">
                     <Checkbox
