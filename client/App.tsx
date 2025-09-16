@@ -14,6 +14,8 @@ import Footer from "@/components/layout/Footer";
 import Challenges from "@/pages/Challenges";
 import ChallengeDetail from "@/pages/ChallengeDetail";
 import ChallengeSubPage from "@/pages/ChallengeSubPage";
+import Impact from "@/pages/Impact";
+import About from "@/pages/About";
 import Account from "@/pages/Account";
 
 const queryClient = new QueryClient();

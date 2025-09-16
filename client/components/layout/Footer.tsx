@@ -46,14 +46,14 @@ export default function Footer() {
             </p>
             <ul className="space-y-1">
               <li>
-                <a href="#impact" className="hover:underline">
+                <Link to="/impact" className="hover:underline">
                   Impact
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#stakeholders" className="hover:underline">
-                  Stakeholders
-                </a>
+                <Link to="/about" className="hover:underline">
+                  About
+                </Link>
               </li>
               <li>
                 <a href="#faq" className="hover:underline">
