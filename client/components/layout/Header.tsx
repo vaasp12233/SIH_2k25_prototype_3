@@ -51,6 +51,24 @@ export function Header() {
             Challenges
           </Link>
           <Link
+            to="/impact"
+            className={cn(
+              "rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-accent hover:text-foreground",
+              isActive("/impact") && "bg-accent text-foreground",
+            )}
+          >
+            Impact
+          </Link>
+          <Link
+            to="/about"
+            className={cn(
+              "rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-accent hover:text-foreground",
+              isActive("/about") && "bg-accent text-foreground",
+            )}
+          >
+            About
+          </Link>
+          <Link
             to="/account"
             className={cn(
               "rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-accent hover:text-foreground",
