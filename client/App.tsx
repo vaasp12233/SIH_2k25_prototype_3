@@ -56,6 +56,8 @@ const App = () => {
                   path="/challenges/:slug/:sub"
                   element={<ChallengeSubPage />}
                 />
+                <Route path="/impact" element={<Impact />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/account" element={<Account />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
