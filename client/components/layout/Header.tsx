@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Leaf, Medal, Sparkles } from "lucide-react";
-import GoogleLogin from "@/components/auth/GoogleLogin";
+import ThemeToggle from "@/components/layout/ThemeToggle";
 
 function Logo() {
   return (
@@ -68,10 +68,7 @@ export function Header() {
               Get started
             </Link>
           </Button>
-          <div className="flex items-center gap-2">
-            <GoogleLogin mode="signin" size="medium" />
-            <GoogleLogin mode="signup" size="medium" />
-          </div>
+          <ThemeToggle />
         </div>
       </div>
     </header>

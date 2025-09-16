@@ -11,7 +11,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Slider } from "@/components/ui/slider";
-import GoogleLogin from "@/components/auth/GoogleLogin";
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { toast } from "sonner";
 import {
   Leaf,
   Recycle,
@@ -38,6 +39,10 @@ export default function Index() {
   const [quizChoice, setQuizChoice] = useState<string | null>(null);
   const [quizDone, setQuizDone] = useState(false);
   const [kms, setKms] = useState<number[]>([2]);
+  const [wizardOpen, setWizardOpen] = useState(false);
+  const [grade, setGrade] = useState<string | null>(null);
+  const [interest, setInterest] = useState<string | null>(null);
+  const [context, setContext] = useState<string | null>(null);
 
   const progress = useMemo(
     () => Math.min(100, Math.round((ecoPoints / 100) * 100)),
