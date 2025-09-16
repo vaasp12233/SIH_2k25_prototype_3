@@ -41,7 +41,6 @@ export default function Account() {
             {!profile ? (
               <div className="flex flex-wrap items-center gap-3">
                 <GoogleLogin mode="signin" />
-                <GoogleLogin mode="signup" />
               </div>
             ) : (
               <div className="flex items-center gap-4">
