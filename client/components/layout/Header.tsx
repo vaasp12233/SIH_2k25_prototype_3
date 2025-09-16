@@ -12,8 +12,12 @@ function Logo() {
         <Leaf className="h-5 w-5" />
       </span>
       <div className="leading-tight">
-        <span className="block text-base font-extrabold tracking-tight">EcoSpark</span>
-        <span className="block text-xs text-muted-foreground -mt-0.5">Learn • Act • Win</span>
+        <span className="block text-base font-extrabold tracking-tight">
+          EcoSpark
+        </span>
+        <span className="block text-xs text-muted-foreground -mt-0.5">
+          Learn • Act • Win
+        </span>
       </div>
     </Link>
   );

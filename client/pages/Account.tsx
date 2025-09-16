@@ -1,9 +1,19 @@
 import { useEffect, useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import GoogleLogin from "@/components/auth/GoogleLogin";
 
-interface Profile { name?: string; email?: string; picture?: string }
+interface Profile {
+  name?: string;
+  email?: string;
+  picture?: string;
+}
 
 export default function Account() {
   const [profile, setProfile] = useState<Profile | null>(null);
@@ -23,7 +33,9 @@ export default function Account() {
         <Card>
           <CardHeader>
             <CardTitle>Account</CardTitle>
-            <CardDescription>Sign in with Google and manage your EcoSpark profile.</CardDescription>
+            <CardDescription>
+              Sign in with Google and manage your EcoSpark profile.
+            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             {!profile ? (
@@ -35,15 +47,23 @@ export default function Account() {
               <div className="flex items-center gap-4">
                 {profile.picture ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={profile.picture} className="h-12 w-12 rounded-full" alt={profile.name || ""} />
+                  <img
+                    src={profile.picture}
+                    className="h-12 w-12 rounded-full"
+                    alt={profile.name || ""}
+                  />
                 ) : (
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent font-bold">
-                    {(profile.name || profile.email || "U").charAt(0).toUpperCase()}
+                    {(profile.name || profile.email || "U")
+                      .charAt(0)
+                      .toUpperCase()}
                   </div>
                 )}
                 <div>
                   <p className="font-semibold">{profile.name || "Student"}</p>
-                  <p className="text-sm text-muted-foreground">{profile.email}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {profile.email}
+                  </p>
                 </div>
                 <Button
                   variant="ghost"

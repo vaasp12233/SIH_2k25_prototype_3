@@ -11,7 +11,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Slider } from "@/components/ui/slider";
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { toast } from "sonner";
 import { useLocation } from "react-router-dom";
 import {
@@ -90,7 +96,11 @@ export default function Index() {
               and community.
             </p>
             <div className="flex flex-wrap items-center gap-3">
-              <Button size="lg" className="shadow" onClick={() => setWizardOpen(true)}>
+              <Button
+                size="lg"
+                className="shadow"
+                onClick={() => setWizardOpen(true)}
+              >
                 <Sparkles className="h-5 w-5" /> Get started
               </Button>
               <Button asChild variant="secondary" size="lg">
@@ -292,7 +302,9 @@ export default function Index() {
               </div>
             </div>
             <div>
-              <p className="text-sm font-medium">Where are you using EcoSpark?</p>
+              <p className="text-sm font-medium">
+                Where are you using EcoSpark?
+              </p>
               <div className="mt-2 grid grid-cols-3 gap-2">
                 {["School", "College", "Home"].map((c) => (
                   <button
@@ -323,9 +335,12 @@ export default function Index() {
               <div className="rounded-lg border p-3 text-sm">
                 <p className="font-semibold">Your starter task</p>
                 <p className="mt-1 text-muted-foreground">
-                  {interest === "Waste" && `Start a 3-bin segregation at ${context?.toLowerCase()}, log with photos.`}
-                  {interest === "Water" && `Audit taps and fix leaks in ${context?.toLowerCase()}, submit report.`}
-                  {interest === "Energy" && "Switch-off drive in classrooms; map top 3 energy hogs."}
+                  {interest === "Waste" &&
+                    `Start a 3-bin segregation at ${context?.toLowerCase()}, log with photos.`}
+                  {interest === "Water" &&
+                    `Audit taps and fix leaks in ${context?.toLowerCase()}, submit report.`}
+                  {interest === "Energy" &&
+                    "Switch-off drive in classrooms; map top 3 energy hogs."}
                 </p>
               </div>
             )}
