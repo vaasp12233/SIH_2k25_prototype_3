@@ -54,18 +54,34 @@ export default function ChallengeDetail() {
   }
 
   return (
-    <section className="container py-10">
-      <div className="mx-auto max-w-3xl">
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Icon name={challenge.icon} /> {challenge.title}
-            </CardTitle>
-            <CardDescription>{challenge.description}</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div>
+    <section className="relative overflow-hidden">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_10%_10%,hsl(var(--accent))_0%,transparent_50%),radial-gradient(60%_60%_at_90%_10%,hsl(var(--accent))_0%,transparent_50%)]" />
+      <div className="container py-10">
+        <div className="mx-auto max-w-3xl">
+          <Card className="border-primary/20 shadow-sm">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Icon name={challenge.icon} /> {challenge.title}
+              </CardTitle>
+              <CardDescription>{challenge.description}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-4 sm:grid-cols-3">
+                <Link to={`/challenges/${challenge.slug}/learn`} className="group rounded-lg border p-4 transition-colors hover:border-primary/40">
+                  <div className="text-sm font-semibold">Learn</div>
+                  <p className="mt-1 text-xs text-muted-foreground">Concepts and why it matters</p>
+                </Link>
+                <Link to={`/challenges/${challenge.slug}/act`} className="group rounded-lg border p-4 transition-colors hover:border-primary/40">
+                  <div className="text-sm font-semibold">Act</div>
+                  <p className="mt-1 text-xs text-muted-foreground">Steps to complete and log</p>
+                </Link>
+                <Link to={`/challenges/${challenge.slug}/rewards`} className="group rounded-lg border p-4 transition-colors hover:border-primary/40">
+                  <div className="text-sm font-semibold">Rewards</div>
+                  <p className="mt-1 text-xs text-muted-foreground">Points and badges</p>
+                </Link>
+              </div>
+
+              <div className="mt-6">
                 <p className="text-sm font-semibold">Getting started</p>
                 <ul className="mt-2 list-disc pl-5 text-sm text-muted-foreground">
                   {challenge.steps.map((s, i) => (
@@ -73,15 +89,16 @@ export default function ChallengeDetail() {
                   ))}
                 </ul>
               </div>
-              <div className="flex gap-2">
+
+              <div className="mt-4 flex gap-2">
                 <Button>Start challenge</Button>
                 <Button asChild variant="secondary">
                   <Link to="/challenges">Browse more</Link>
                 </Button>
               </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </section>
   );
