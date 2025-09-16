@@ -90,23 +90,14 @@ export default function Index() {
               and community.
             </p>
             <div className="flex flex-wrap items-center gap-3">
-              <Button asChild size="lg" className="shadow">
-                <a
-                  href="#get-started"
-                  className="inline-flex items-center gap-2"
-                >
-                  <Sparkles className="h-5 w-5" /> Start learning
-                </a>
+              <Button size="lg" className="shadow" onClick={() => setWizardOpen(true)}>
+                <Sparkles className="h-5 w-5" /> Get started
               </Button>
               <Button asChild variant="secondary" size="lg">
                 <a href="#impact" className="inline-flex items-center gap-2">
                   <Leaf className="h-5 w-5" /> Why it works
                 </a>
               </Button>
-              <div className="flex gap-2">
-                <GoogleLogin mode="signin" />
-                <GoogleLogin mode="signup" />
-              </div>
             </div>
             <div className="flex items-center gap-4 pt-2 text-sm text-muted-foreground">
               <span className="inline-flex items-center gap-2">
