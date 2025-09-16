@@ -151,7 +151,7 @@ export default function GoogleLogin({
           size="sm"
           onClick={() => {
             try {
-              google?.accounts.id.disableAutoSelect();
+              window.google?.accounts.id.disableAutoSelect();
             } catch {}
             localStorage.removeItem("ecospark_user");
             setProfile(null);
