@@ -80,8 +80,6 @@ export default function Challenges() {
         Want a custom challenge for your school or NGO? Reach out and we’ll add
         it.
       </p>
-
-
     </section>
   );
 }

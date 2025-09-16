@@ -114,16 +114,30 @@ export default function Impact() {
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             <Card className="border-primary/20">
               <CardHeader>
-                <CardTitle>Impact of Environmental Studies in Education</CardTitle>
+                <CardTitle>
+                  Impact of Environmental Studies in Education
+                </CardTitle>
                 <CardDescription>
                   How classroom learning translates into measurable change
                 </CardDescription>
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground space-y-2">
-                <p>• Builds eco‑literacy: students understand waste, water, and energy systems.</p>
-                <p>• Improves problem‑solving: audits and projects foster practical skills.</p>
-                <p>• Encourages civic action: clubs and drives connect schools with communities.</p>
-                <p>• Supports NEP 2020: experiential learning with local, real‑world outcomes.</p>
+                <p>
+                  • Builds eco‑literacy: students understand waste, water, and
+                  energy systems.
+                </p>
+                <p>
+                  • Improves problem‑solving: audits and projects foster
+                  practical skills.
+                </p>
+                <p>
+                  • Encourages civic action: clubs and drives connect schools
+                  with communities.
+                </p>
+                <p>
+                  • Supports NEP 2020: experiential learning with local,
+                  real‑world outcomes.
+                </p>
               </CardContent>
             </Card>
             <Card className="border-primary/20">
@@ -134,10 +148,22 @@ export default function Impact() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground space-y-2">
-                <p>• Track and reduce electricity use by switching off idle appliances.</p>
-                <p>• Save water via leak checks, low‑flow fixtures, and mindful consumption.</p>
-                <p>• Segregate waste into wet/dry/reject to enable recycling and composting.</p>
-                <p>• Prefer walking/cycling or shared transport to cut CO₂ emissions.</p>
+                <p>
+                  • Track and reduce electricity use by switching off idle
+                  appliances.
+                </p>
+                <p>
+                  • Save water via leak checks, low‑flow fixtures, and mindful
+                  consumption.
+                </p>
+                <p>
+                  • Segregate waste into wet/dry/reject to enable recycling and
+                  composting.
+                </p>
+                <p>
+                  • Prefer walking/cycling or shared transport to cut CO₂
+                  emissions.
+                </p>
               </CardContent>
             </Card>
           </div>
