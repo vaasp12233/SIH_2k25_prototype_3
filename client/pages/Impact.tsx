@@ -99,9 +99,9 @@ export default function Impact() {
                     fill="var(--color-energy)"
                     fillOpacity={0.15}
                   />
+                  <ChartLegend content={<ChartLegendContent />} />
                 </AreaChart>
               </ChartContainer>
-              <ChartLegend content={<ChartLegendContent />} />
             </CardContent>
           </Card>
 
