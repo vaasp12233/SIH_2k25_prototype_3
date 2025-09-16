@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Leaf, Medal, Sparkles } from "lucide-react";
 import ThemeToggle from "@/components/layout/ThemeToggle";
+import GoogleLogin from "@/components/auth/GoogleLogin";
 
 function Logo() {
   return (
@@ -68,6 +69,7 @@ export function Header() {
               Get started
             </Link>
           </Button>
+          <GoogleLogin size="medium" />
           <ThemeToggle />
         </div>
       </div>
