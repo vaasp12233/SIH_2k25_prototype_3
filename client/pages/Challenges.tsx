@@ -1,7 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Leaf, Recycle, Droplets, Bike, SunMedium } from "lucide-react";
 
 export default function Challenges() {
@@ -81,8 +80,6 @@ export default function Challenges() {
         Want a custom challenge for your school or NGO? Reach out and we’ll add
         it.
       </p>
-
-
     </section>
   );
 }

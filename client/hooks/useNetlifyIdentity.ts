@@ -18,29 +18,59 @@ export function useNetlifyIdentity() {
   const [user, setUser] = useState<IdentityUser>(null);
 
   useEffect(() => {
-    const id = window.netlifyIdentity;
-    if (!id) return;
+    function setup(identity: any) {
+      const handleInit = (u: IdentityUser) => {
+        setUser(u);
+        setReady(true);
+      };
+      const handleLogin = (u: IdentityUser) => setUser(u);
+      const handleLogout = () => setUser(null);
+      try {
+        identity.on("init", handleInit);
+        identity.on("login", handleLogin);
+        identity.on("logout", handleLogout);
+        identity.init();
+      } catch {}
+      return () => {
+        try {
+          identity.off("init", handleInit);
+          identity.off("login", handleLogin);
+          identity.off("logout", handleLogout);
+        } catch {}
+      };
+    }
 
-    const handleInit = (u: IdentityUser) => {
-      setUser(u);
-      setReady(true);
+    if (window.netlifyIdentity) {
+      return setup(window.netlifyIdentity);
+    }
+
+    const script = document.querySelector(
+      'script[src="https://identity.netlify.com/v1/netlify-identity-widget.js"]',
+    ) as HTMLScriptElement | null;
+
+    let cleanup: (() => void) | undefined;
+
+    const onLoad = () => {
+      if (window.netlifyIdentity) {
+        cleanup = setup(window.netlifyIdentity);
+      }
     };
-    const handleLogin = (u: IdentityUser) => setUser(u);
-    const handleLogout = () => setUser(null);
 
-    try {
-      id.on("init", handleInit);
-      id.on("login", handleLogin);
-      id.on("logout", handleLogout);
-      id.init();
-    } catch {}
+    if (script) {
+      script.addEventListener("load", onLoad, { once: true });
+    }
+
+    const timer = window.setInterval(() => {
+      if (window.netlifyIdentity) {
+        window.clearInterval(timer);
+        cleanup = setup(window.netlifyIdentity);
+      }
+    }, 300);
 
     return () => {
-      try {
-        id.off("init", handleInit);
-        id.off("login", handleLogin);
-        id.off("logout", handleLogout);
-      } catch {}
+      window.clearInterval(timer);
+      if (script) script.removeEventListener("load", onLoad);
+      if (cleanup) cleanup();
     };
   }, []);
 
