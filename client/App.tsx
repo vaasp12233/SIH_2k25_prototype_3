@@ -49,6 +49,7 @@ const App = () => {
                 <Route path="/" element={<Index />} />
                 <Route path="/challenges" element={<Challenges />} />
                 <Route path="/challenges/:slug" element={<ChallengeDetail />} />
+                <Route path="/challenges/:slug/:sub" element={<ChallengeSubPage />} />
                 <Route path="/account" element={<Account />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
