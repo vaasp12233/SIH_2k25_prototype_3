@@ -106,12 +106,25 @@
   body {
     @apply bg-background text-foreground;
     background-image:
-      radial-gradient(1200px 600px at 10% -10%, hsl(var(--accent)) 8%, transparent 60%),
-      radial-gradient(1200px 600px at 110% -10%, hsl(var(--accent)) 8%, transparent 60%),
+      radial-gradient(
+        1200px 600px at 10% -10%,
+        hsl(var(--accent)) 8%,
+        transparent 60%
+      ),
+      radial-gradient(
+        1200px 600px at 110% -10%,
+        hsl(var(--accent)) 8%,
+        transparent 60%
+      ),
       linear-gradient(transparent 0, transparent 99%),
       linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px),
       linear-gradient(0deg, hsl(var(--border)) 1px, transparent 1px);
-    background-size: auto, auto, auto, 48px 48px, 48px 48px;
+    background-size:
+      auto,
+      auto,
+      auto,
+      48px 48px,
+      48px 48px;
     background-position: center, center, center, center, center;
     background-repeat: no-repeat, no-repeat, no-repeat, repeat, repeat;
     background-attachment: fixed;

@@ -1,13 +1,20 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
 import { Badge } from "@/components/ui/badge";
 import { Leaf, Droplets, SunMedium } from "lucide-react";
-import {
-  AreaChart,
-  Area,
-  XAxis,
-  CartesianGrid,
-} from "recharts";
+import { AreaChart, Area, XAxis, CartesianGrid } from "recharts";
 
 const data = [
   { month: "Jan", co2: 12, water: 80, energy: 50 },
@@ -43,25 +50,55 @@ export default function Impact() {
       <div className="container py-10">
         <div className="mx-auto max-w-4xl">
           <div className="text-center">
-            <Badge variant="secondary" className="mb-3">Hackathon Ready</Badge>
-            <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Real-world Impact</h1>
-            <p className="mt-2 text-muted-foreground">Track environmental outcomes from student actions across CO₂, water, and energy.</p>
+            <Badge variant="secondary" className="mb-3">
+              Hackathon Ready
+            </Badge>
+            <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Real-world Impact
+            </h1>
+            <p className="mt-2 text-muted-foreground">
+              Track environmental outcomes from student actions across CO₂,
+              water, and energy.
+            </p>
           </div>
 
           <Card className="mt-8 border-primary/20 shadow-sm">
             <CardHeader>
               <CardTitle>School-wide progress</CardTitle>
-              <CardDescription>Aggregated metrics (sample data)</CardDescription>
+              <CardDescription>
+                Aggregated metrics (sample data)
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <ChartContainer config={config} className="w-full">
                 <AreaChart data={data} margin={{ left: 12, right: 12 }}>
                   <CartesianGrid vertical={false} />
                   <XAxis dataKey="month" tickLine={false} axisLine={false} />
-                  <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-                  <Area type="monotone" dataKey="co2" stroke="var(--color-co2)" fill="var(--color-co2)" fillOpacity={0.2} />
-                  <Area type="monotone" dataKey="water" stroke="var(--color-water)" fill="var(--color-water)" fillOpacity={0.15} />
-                  <Area type="monotone" dataKey="energy" stroke="var(--color-energy)" fill="var(--color-energy)" fillOpacity={0.15} />
+                  <ChartTooltip
+                    cursor={false}
+                    content={<ChartTooltipContent />}
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="co2"
+                    stroke="var(--color-co2)"
+                    fill="var(--color-co2)"
+                    fillOpacity={0.2}
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="water"
+                    stroke="var(--color-water)"
+                    fill="var(--color-water)"
+                    fillOpacity={0.15}
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="energy"
+                    stroke="var(--color-energy)"
+                    fill="var(--color-energy)"
+                    fillOpacity={0.15}
+                  />
                 </AreaChart>
               </ChartContainer>
               <ChartLegend content={<ChartLegendContent />} />
@@ -79,12 +116,22 @@ export default function Impact() {
   );
 }
 
-function Stat({ label, value, sub }: { label: string; value: string; sub: string }) {
+function Stat({
+  label,
+  value,
+  sub,
+}: {
+  label: string;
+  value: string;
+  sub: string;
+}) {
   return (
     <Card className="border-primary/20">
       <CardHeader>
         <CardTitle className="text-xl">{value}</CardTitle>
-        <CardDescription>{label} • {sub}</CardDescription>
+        <CardDescription>
+          {label} • {sub}
+        </CardDescription>
       </CardHeader>
     </Card>
   );
