@@ -99,7 +99,9 @@ export default function Challenges() {
                     <Icon className="h-5 w-5 text-primary" /> {c.title}
                   </span>
                   {completed && (
-                    <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs text-primary">Done</span>
+                    <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs text-primary">
+                      Done
+                    </span>
                   )}
                 </CardTitle>
               </CardHeader>
@@ -117,7 +119,10 @@ export default function Challenges() {
                         size="sm"
                         onClick={(e) => {
                           e.stopPropagation();
-                          toast({ title: "Challenge started", description: c.title });
+                          toast({
+                            title: "Challenge started",
+                            description: c.title,
+                          });
                         }}
                       >
                         Start challenge
