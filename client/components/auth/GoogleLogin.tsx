@@ -29,8 +29,14 @@ declare global {
   const google: any;
 }
 
+type GoogleMode = "signin" | "signup";
+
 export default function GoogleLogin({
-  size = "large" as "large" | "medium" | "small",
+  size = "large",
+  mode = "signin",
+}: {
+  size?: "large" | "medium" | "small";
+  mode?: GoogleMode;
 }) {
   const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined;
   const btnRef = useRef<HTMLDivElement>(null);
@@ -79,7 +85,7 @@ export default function GoogleLogin({
         } catch {}
       },
       auto_select: false,
-      context: "signin",
+      context: mode as "signin" | "signup",
     });
 
     google.accounts.id.renderButton(btnRef.current, {
@@ -87,7 +93,7 @@ export default function GoogleLogin({
       theme: "outline",
       size,
       shape: "pill",
-      text: "signin_with",
+      text: mode === "signup" ? "signup_with" : "signin_with",
       logo_alignment: "left",
     });
   }, [clientId, ready]);
@@ -99,11 +105,11 @@ export default function GoogleLogin({
         size="lg"
         onClick={() =>
           alert(
-            "Set VITE_GOOGLE_CLIENT_ID to enable Google Login, or ask us to connect Supabase Auth for Google OAuth.",
+            "Set VITE_GOOGLE_CLIENT_ID to enable Google OAuth, or ask us to connect Supabase via MCP.",
           )
         }
       >
-        Continue with Google
+        {mode === "signup" ? "Sign up with Google" : "Sign in with Google"}
       </Button>
     );
   }
