@@ -1,5 +1,3 @@
-import { Bike, Droplets, Leaf, Recycle, SunMedium } from "lucide-react";
-
 export type Challenge = {
   slug: string;
   title: string;
@@ -69,17 +67,3 @@ export const CHALLENGES: Challenge[] = [
     ],
   },
 ];
-
-export function ChallengeIcon({ name, className }: { name: Challenge["icon"]; className?: string }) {
-  const C =
-    name === "recycle"
-      ? Recycle
-      : name === "droplets"
-        ? Droplets
-        : name === "bike"
-          ? Bike
-          : name === "sun"
-            ? SunMedium
-            : Leaf;
-  return <C className={className} />;
-}
