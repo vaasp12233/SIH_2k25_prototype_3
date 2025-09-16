@@ -1,7 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 import { CHALLENGES } from "./challenges-data";
 import { SUB_PAGES } from "./challenge-subpages";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export default function ChallengeSubPage() {
@@ -31,7 +37,9 @@ export default function ChallengeSubPage() {
     <section className="container py-10">
       <div className="mx-auto max-w-3xl space-y-6">
         <div className="rounded-xl border bg-gradient-to-r from-accent to-transparent p-6">
-          <h1 className="text-2xl font-extrabold tracking-tight">{challenge.title} • {subPage.title}</h1>
+          <h1 className="text-2xl font-extrabold tracking-tight">
+            {challenge.title} • {subPage.title}
+          </h1>
           <p className="mt-1 text-muted-foreground">{subPage.description}</p>
         </div>
 
@@ -43,7 +51,11 @@ export default function ChallengeSubPage() {
           <CardContent>
             {subPage.slug === "learn" && (
               <div className="prose prose-sm max-w-none dark:prose-invert">
-                <p>This section explains the background and importance of {challenge.title.toLowerCase()} with India-first context and examples.</p>
+                <p>
+                  This section explains the background and importance of{" "}
+                  {challenge.title.toLowerCase()} with India-first context and
+                  examples.
+                </p>
                 <ul>
                   {challenge.steps.map((s, i) => (
                     <li key={i}>{s}</li>
@@ -56,7 +68,9 @@ export default function ChallengeSubPage() {
                 <p>Follow these steps and log your progress to earn points:</p>
                 <ol className="list-decimal pl-4">
                   {challenge.steps.map((s, i) => (
-                    <li key={i} className="mb-1">{s}</li>
+                    <li key={i} className="mb-1">
+                      {s}
+                    </li>
                   ))}
                 </ol>
                 <Button className="mt-2">Log progress</Button>
@@ -76,8 +90,12 @@ export default function ChallengeSubPage() {
         </Card>
 
         <div className="flex gap-2">
-          <Button asChild variant="secondary"><Link to={`/challenges/${slug}`}>Back to {challenge.title}</Link></Button>
-          <Button asChild><Link to="/challenges">All challenges</Link></Button>
+          <Button asChild variant="secondary">
+            <Link to={`/challenges/${slug}`}>Back to {challenge.title}</Link>
+          </Button>
+          <Button asChild>
+            <Link to="/challenges">All challenges</Link>
+          </Button>
         </div>
       </div>
     </section>

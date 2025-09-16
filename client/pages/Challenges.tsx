@@ -58,8 +58,8 @@ export default function Challenges() {
         </div>
 
         <p className="mt-8 text-center text-sm text-muted-foreground">
-          Want a custom challenge for your school or NGO? Reach out and we’ll add
-          it.
+          Want a custom challenge for your school or NGO? Reach out and we’ll
+          add it.
         </p>
       </div>
     </section>

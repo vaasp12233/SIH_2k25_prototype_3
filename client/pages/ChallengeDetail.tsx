@@ -67,17 +67,32 @@ export default function ChallengeDetail() {
             </CardHeader>
             <CardContent>
               <div className="grid gap-4 sm:grid-cols-3">
-                <Link to={`/challenges/${challenge.slug}/learn`} className="group rounded-lg border p-4 transition-colors hover:border-primary/40">
+                <Link
+                  to={`/challenges/${challenge.slug}/learn`}
+                  className="group rounded-lg border p-4 transition-colors hover:border-primary/40"
+                >
                   <div className="text-sm font-semibold">Learn</div>
-                  <p className="mt-1 text-xs text-muted-foreground">Concepts and why it matters</p>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Concepts and why it matters
+                  </p>
                 </Link>
-                <Link to={`/challenges/${challenge.slug}/act`} className="group rounded-lg border p-4 transition-colors hover:border-primary/40">
+                <Link
+                  to={`/challenges/${challenge.slug}/act`}
+                  className="group rounded-lg border p-4 transition-colors hover:border-primary/40"
+                >
                   <div className="text-sm font-semibold">Act</div>
-                  <p className="mt-1 text-xs text-muted-foreground">Steps to complete and log</p>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Steps to complete and log
+                  </p>
                 </Link>
-                <Link to={`/challenges/${challenge.slug}/rewards`} className="group rounded-lg border p-4 transition-colors hover:border-primary/40">
+                <Link
+                  to={`/challenges/${challenge.slug}/rewards`}
+                  className="group rounded-lg border p-4 transition-colors hover:border-primary/40"
+                >
                   <div className="text-sm font-semibold">Rewards</div>
-                  <p className="mt-1 text-xs text-muted-foreground">Points and badges</p>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Points and badges
+                  </p>
                 </Link>
               </div>
 
