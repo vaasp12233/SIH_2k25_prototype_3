@@ -68,7 +68,7 @@ export function Header() {
               Get started
             </Link>
           </Button>
-          <div className="hidden items-center gap-2 sm:flex">
+          <div className="flex items-center gap-2">
             <GoogleLogin mode="signin" size="medium" />
             <GoogleLogin mode="signup" size="medium" />
           </div>
