@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Sparkles, LogOut } from "lucide-react";
 import { useNetlifyIdentity } from "@/hooks/useNetlifyIdentity";
 import { useNavigate } from "react-router-dom";
+import GoogleLogin from "@/components/auth/GoogleLogin";
 
 export default function SignInButton() {
   const { ready, user, openLogin, logout } = useNetlifyIdentity();
@@ -20,16 +21,23 @@ export default function SignInButton() {
     );
   }
 
+  const hasIdentity = typeof window !== "undefined" && !!window.netlifyIdentity;
+
   return (
-    <Button
-      className="shadow-sm"
-      onClick={() => {
-        const opened = openLogin();
-        if (!opened) navigate("/#get-started");
-      }}
-      disabled={!ready && !window.netlifyIdentity}
-    >
-      <Sparkles className="h-4 w-4" /> Sign in with Google
-    </Button>
+    <div className="flex items-center gap-2">
+      <GoogleLogin mode="signin" size="medium" />
+      {hasIdentity && (
+        <Button
+          variant="ghost"
+          onClick={() => {
+            const opened = openLogin();
+            if (!opened) navigate("/#get-started");
+          }}
+          disabled={!ready && !hasIdentity}
+        >
+          Use site login
+        </Button>
+      )}
+    </div>
   );
 }
