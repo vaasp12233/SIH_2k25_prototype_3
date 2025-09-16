@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { Slider } from "@/components/ui/slider";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { toast } from "sonner";
+import { useLocation } from "react-router-dom";
 import {
   Leaf,
   Recycle,
@@ -139,7 +140,7 @@ export default function Index() {
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-3">
                   <p className="text-sm font-semibold">
-                    Today’s micro‑challenges
+                    Today��s micro‑challenges
                   </p>
                   <div className="flex items-center gap-3 rounded-lg border p-3">
                     <Checkbox
